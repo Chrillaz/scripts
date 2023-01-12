@@ -1,0 +1,9 @@
+{
+    "root": true,
+    "extends": [
+      "plugin:@chrillaz/recommended"
+    ],
+    "plugins": [
+      "@chrillaz"
+    ]
+}
