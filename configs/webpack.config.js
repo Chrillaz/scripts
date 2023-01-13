@@ -1,13 +1,13 @@
-const TerserPlugin = require("terser-webpack-plugin");
-const HTMLWebpackPlugin = require("html-webpack-plugin");
-const babelOptions = require("../configs/babel.options");
+const TerserPlugin = require('terser-webpack-plugin');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+const babelOptions = require('../configs/babel.options');
 const browserslist = require('browserslist');
 
 const {
 	hasPackage,
 	getConsumerPath,
 	hasConsumerConfiguration,
-    getPackagePath,
+	getPackagePath,
 } = require('../utilities');
 
 const context = getConsumerPath('.');
@@ -31,6 +31,18 @@ if (hasReact) {
 		extensions.push('.tsx');
 	}
 }
+
+const devServer =
+	process.env.NODE_ENV !== 'development'
+		? undefined
+		: {
+				static: getConsumerPath('public'),
+				compress: true,
+				hot: true,
+				port: 3000,
+				open: true,
+				historyApiFallback: hasPackage('react'),
+		  };
 
 const optimization = {
 	minimize: true,
@@ -61,22 +73,23 @@ const optimization = {
 const plugins = [
 	new HTMLWebpackPlugin({
 		inject: 'body',
-		template: getConsumerPath('index.html'),
-        output: getConsumerPath('dist'),
-        publicPath: '/'
+		template: getConsumerPath('public/index.html'),
+		output: getConsumerPath('dist'),
+		publicPath: '/',
 	}),
 ];
 
-let target = 'browserslist';
-if (!browserslist.findConfig('.')) {
-	target += ':' + getPackagePath('configs/.browserslistrc');
-}
+// let target = 'browserslist';
+// if (!browserslist.findConfig('.')) {
+// 	target += ':' + getPackagePath('configs/.browserslistrc');
+// }
 
 const config = {
-    mode: process.env.NODE_ENV,
+	mode: process.env.NODE_ENV,
 	context,
-	target,
+	// target,
 	devtool: 'source-map',
+	devServer,
 	entry: getConsumerPath('src'),
 	output: {
 		filename: '[name].js',

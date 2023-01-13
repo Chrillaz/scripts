@@ -86,16 +86,20 @@ function resolveConfiguration(fileName, resolver) {
 
 /**
  * Checks if package is in node_modules
- * 
+ *
  * @param { string } packageName
  * @returns boolean
  */
 function hasPackage(packageName) {
-    try {
-        return Boolean(require.resolve(packageName));
-    } catch( error ) {
-        return false;
-    }
+	try {
+		return Boolean(
+			require.resolve(packageName, {
+				paths: [consumerRoot],
+			})
+		);
+	} catch (error) {
+		return false;
+	}
 }
 
 /**
@@ -234,12 +238,12 @@ function getArgs() {
 
 /**
  * Checks if coonsumer has or provides config
- * 
- * @param { string } configName 
+ *
+ * @param { string } configName
  * @returns boolean
  */
 function hasConfig(configName) {
-    return hasArg('config') || hasArg('c') || hasConsumerConfiguration(configName);
+	return hasArg('config') || hasArg('c') || hasConsumerConfiguration(configName);
 }
 
 module.exports = {
@@ -262,5 +266,5 @@ module.exports = {
 	hasArg,
 	getFileArg,
 	getArgs,
-    hasConfig
+	hasConfig,
 };
