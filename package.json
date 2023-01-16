@@ -8,7 +8,9 @@
 		"scripts": "./bin/scripts.js"
 	},
 	"files": [
-		"configs"
+		"configs",
+        "scripts",
+        "utilities"
 	],
 	"publishConfig": {
 		"@chrillaz/scripts:registry": "https://npm.pkg.github.com"
