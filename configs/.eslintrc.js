@@ -1,19 +1,24 @@
+const babelOptions = require('./babel.options');
+
 module.exports = {
-    root: true,
+	env: {
+		browser: true,
+		es6: true,
+		jest: true,
+		node: true,
+	},
 	extends: [
 		require.resolve('@chrillaz/eslint-plugin'),
 	],
-	env: {
-		browser: true,
-		node: true,
-		jest: true,
-		es6: true,
-	},
 	parser: '@babel/eslint-parser',
 	parserOptions: {
-        requireConfigFile: false,
-	    babelOptions: {
-            presets: require('./babel.options').presets
-        },
+		babelOptions: {
+			presets: babelOptions.presets,
+		},
+		requireConfigFile: false,
+	},
+	root: true,
+	rules: {
+		'@typescript-eslint/no-var-requires': 0,
 	},
 };

@@ -4,7 +4,7 @@ const {
 	hasArg,
 	getArgs,
 	getFileArg,
-    hasConfig,
+	hasConfig,
 	hasConsumerConfiguration,
 	getPackageConfiguration,
 } = require('../utilities');

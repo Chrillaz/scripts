@@ -7,22 +7,22 @@ const {
 } = require('../utilities');
 
 const config = {
-	rootDir: consumerRoot,
 	displayName: getKeyFromPackage('name'),
 	moduleFileExtensions: [
 		'js',
 		'jsx',
 	],
+	rootDir: consumerRoot,
 	setupFilesAfterEnv: [getPackageConfiguration('jest.setup')],
 	testEnvironment: require.resolve('jest-environment-jsdom'),
 	testEnvironmentOptions: {
 		url: 'http://localhost:3000',
 	},
-	testPathIgnorePatterns: ['/node_modules/'],
 	testMatch: [
 		'<rootDir>/__test__/**/*.(test|spec).[jt]s?(x)',
 		'<rootDir>/src/**/*.(test|spec).[jt]s?(x)',
 	],
+	testPathIgnorePatterns: ['/node_modules/'],
 	transform: {
 		'^.+\\.(js|jsx)?$': require.resolve('babel-jest'),
 	},

@@ -1,6 +1,6 @@
 const { sync } = require('cross-spawn');
 const chalk = require('chalk');
-const { getPackageScript, getArgs, hasScript } = require('../utilities');
+const { getArgs, getPackageScript, getScripts, hasScript } = require('../utilities');
 const { nodeArgs, scriptName, scriptArgs } = getArgs();
 
 if (!scriptName) {

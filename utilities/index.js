@@ -231,8 +231,8 @@ function getArgs() {
 
 	return {
 		nodeArgs: args.slice(0, scriptIndex),
-		scriptName: args[scriptIndex],
 		scriptArgs: args.slice(scriptIndex + 1),
+		scriptName: args[scriptIndex],
 	};
 }
 
@@ -247,24 +247,24 @@ function hasConfig(configName) {
 }
 
 module.exports = {
-	getScripts,
-	hasScript,
-	consumerRoot,
-	scriptsRoot,
 	configsRoot,
-	hasPackage,
-	hasKeyInPackage,
-	getKeyFromPackage,
-	getConsumerPath,
-	hasConsumerConfiguration,
-	getConsumerConfiguration,
-	getPackagePath,
-	getPackageConfig,
-	getPackageScript,
-	hasPackageConfiguration,
-	getPackageConfiguration,
-	hasArg,
-	getFileArg,
+	consumerRoot,
 	getArgs,
+	getConsumerConfiguration,
+	getConsumerPath,
+	getFileArg,
+	getKeyFromPackage,
+	getPackageConfig,
+	getPackageConfiguration,
+	getPackagePath,
+	getPackageScript,
+	getScripts,
+	hasArg,
 	hasConfig,
+	hasConsumerConfiguration,
+	hasKeyInPackage,
+	hasPackage,
+	hasPackageConfiguration,
+	hasScript,
+	scriptsRoot,
 };

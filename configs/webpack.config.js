@@ -36,12 +36,12 @@ const devServer =
 	process.env.NODE_ENV !== 'development'
 		? undefined
 		: {
-				static: getConsumerPath('public'),
 				compress: true,
-				hot: true,
-				port: 3000,
-				open: true,
 				historyApiFallback: hasPackage('react'),
+				hot: true,
+				open: true,
+				port: 3000,
+				static: getConsumerPath('public'),
 		  };
 
 const optimization = {
@@ -50,10 +50,10 @@ const optimization = {
 		new TerserPlugin({
 			terserOptions: {
 				compress: {
-					ecma: 6,
-					warnings: false,
 					comparisons: false,
+					ecma: 6,
 					inline: 2,
+					warnings: false,
 				},
 				keep_classnames: false,
 				keep_fnames: false,
@@ -61,9 +61,9 @@ const optimization = {
 					safari10: true,
 				},
 				output: {
-					ecma: 6,
-					comments: false,
 					ascii_only: true,
+					comments: false,
+					ecma: 6,
 				},
 			},
 		}),
@@ -73,9 +73,9 @@ const optimization = {
 const plugins = [
 	new HTMLWebpackPlugin({
 		inject: 'body',
-		template: getConsumerPath('public/index.html'),
 		output: getConsumerPath('dist'),
 		publicPath: '/',
+		template: getConsumerPath('public/index.html'),
 	}),
 ];
 
@@ -85,26 +85,16 @@ if (!browserslist.findConfig('.')) {
 }
 
 const config = {
-	mode: process.env.NODE_ENV,
 	context,
-	target,
-	devtool: 'source-map',
 	devServer,
+	devtool: 'source-map',
 	entry: getConsumerPath('src'),
-	output: {
-		filename: '[name].js',
-		path: getConsumerPath('dist'),
-		publicPath: '/',
-	},
-	optimization,
-	resolve: {
-		extensions,
-	},
+	mode: process.env.NODE_ENV,
 	module: {
 		rules: [
 			{
-				test: /\.(ts|tsx|js|jsx)$/,
 				exclude: /node_modules/,
+				test: /\.(ts|tsx|js|jsx)$/,
 				use: {
 					loader: require.resolve('babel-loader'),
 					options: babelOptions,
@@ -112,7 +102,17 @@ const config = {
 			},
 		],
 	},
+	optimization,
+	output: {
+		filename: '[name].js',
+		path: getConsumerPath('dist'),
+		publicPath: '/',
+	},
 	plugins: plugins.filter(Boolean),
+	resolve: {
+		extensions,
+	},
+	target,
 };
 
 module.exports = config;
