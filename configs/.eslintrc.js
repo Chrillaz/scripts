@@ -1,6 +1,7 @@
 module.exports = {
+    root: true,
 	extends: [
-		'plugin:@chrillaz/eslint-plugin',
+		require.resolve('@chrillaz/eslint-plugin'),
 	],
 	env: {
 		browser: true,
@@ -12,7 +13,7 @@ module.exports = {
 	parserOptions: {
         requireConfigFile: false,
 	    babelOptions: {
-            presets: [ require('./babel.options').presets ]
+            presets: require('./babel.options').presets
         },
 	},
 };
