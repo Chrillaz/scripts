@@ -1,12 +1,18 @@
-module.export = {
-    root: true,
+module.exports = {
+	extends: [
+		'plugin:@chrillaz/eslint-plugin',
+	],
 	env: {
+		browser: true,
+		node: true,
+		jest: true,
 		es6: true,
 	},
-	extends: [
-		'plugin:@chrillaz/recommended',
-	],
-    plugins: [
-        '@chrillaz'
-    ]
+	parser: '@babel/eslint-parser',
+	parserOptions: {
+        requireConfigFile: false,
+	    babelOptions: {
+            presets: [ require('./babel.options').presets ]
+        },
+	},
 };

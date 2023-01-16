@@ -79,15 +79,15 @@ const plugins = [
 	}),
 ];
 
-// let target = 'browserslist';
-// if (!browserslist.findConfig('.')) {
-// 	target += ':' + getPackagePath('configs/.browserslistrc');
-// }
+let target = 'browserslist';
+if (!browserslist.findConfig('.')) {
+	target += ':' + getPackagePath('configs/.browserslistrc');
+}
 
 const config = {
 	mode: process.env.NODE_ENV,
 	context,
-	// target,
+	target,
 	devtool: 'source-map',
 	devServer,
 	entry: getConsumerPath('src'),

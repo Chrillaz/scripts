@@ -5,7 +5,7 @@ const isEnvTest = process.env.NODE_ENV === 'test';
 const options = {
 	babelrc: false,
 	configFile: false,
-    compact: true
+	compact: true,
 };
 
 options.presets = [
