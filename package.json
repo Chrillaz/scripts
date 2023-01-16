@@ -9,8 +9,8 @@
 	},
 	"files": [
 		"configs",
-        "scripts",
-        "utilities"
+		"scripts",
+		"utilities"
 	],
 	"publishConfig": {
 		"@chrillaz/scripts:registry": "https://npm.pkg.github.com"
@@ -29,7 +29,7 @@
 		"@babel/preset-env": "^7.19.1",
 		"@babel/preset-react": "^7.18.6",
 		"@babel/preset-typescript": "^7.18.6",
-		"@chrillaz/eslint-plugin": "^1.3.0",
+		"@chrillaz/eslint-plugin": "^1.3.1",
 		"@chrillaz/prettier-config": "1.1.0",
 		"@testing-library/jest-dom": "^5.16.5",
 		"babel-jest": "^29.0.3",
